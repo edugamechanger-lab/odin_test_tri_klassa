@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Один тест — три класса</title>
+
+<style>
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: Inter, Arial, sans-serif;
+  background: #EAF4FF;
+  color: #18263A;
+}
+
+.page {
+  min-height: 100vh;
+  padding: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card {
+  width: min(100%, 900px);
+  height: min(820px, calc(100vh - 48px));
+  background: #F8FBFF;
+  border: 1px solid #BED8F3;
+  border-radius: 24px;
+  padding: 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  box-shadow: 0 12px 40px rgba(25, 75, 130, .08);
+}
+
+.badge {
+  width: fit-content;
+  padding: 7px 11px;
+  background: #B8DCFF;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 800;
+}
+
+h1 {
+  margin: 0;
+  font-size: clamp(30px, 5vw, 52px);
+  line-height: .98;
+  letter-spacing: -1.5px;
+}
+
+.lead {
+  margin: 0;
+  max-width: 700px;
+  color: #52677F;
+  font-size: 16px;
+  line-height: 1.45;
+}
+
+.flow {
+  padding: 12px 16px;
+  background: #D9EBFF;
+  border-radius: 14px;
+  font-weight: 700;
+  font-size: 14px;
+}
+
+.prompt-box {
+  min-height: 130px;
+  flex: 1;
+  overflow-y: auto;
+  padding: 18px;
+  background: #FFFFFF;
+  border: 1px solid #C9DDF1;
+  border-radius: 16px;
+  font-size: 13px;
+  line-height: 1.55;
+  white-space: pre-wrap;
+}
+
+.hint {
+  margin: 0;
+  font-size: 12px;
+  color: #62778F;
+}
+
+.telegram-block {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.telegram-copy {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.telegram-copy strong {
+  font-size: 14px;
+}
+
+.telegram-copy span {
+  font-size: 12px;
+  color: #62778F;
+}
+
+.bottom {
+  display: flex;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+button, .tg {
+  border: 0;
+  border-radius: 12px;
+  padding: 13px 16px;
+  font: inherit;
+  font-size: 13px;
+  font-weight: 750;
+  cursor: pointer;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+button {
+  background: #2777C9;
+  color: white;
+}
+
+.tg {
+  background: #172B43;
+  color: white;
+}
+
+@media (max-width: 700px) {
+  .page {
+    padding: 12px;
+    align-items: stretch;
+  }
+
+  .card {
+    height: calc(100vh - 24px);
+    padding: 18px;
+    border-radius: 20px;
+    gap: 11px;
+  }
+
+  h1 { font-size: 34px; }
+  .lead { font-size: 14px; }
+
+  .flow {
+    font-size: 12px;
+    padding: 10px 12px;
+  }
+
+  .prompt-box {
+    font-size: 12px;
+    padding: 14px;
+  }
+
+  .telegram-block {
+    align-items: stretch;
+    flex-direction: column;
+    gap: 9px;
+  }
+
+  .bottom {
+    width: 100%;
+  }
+
+  .bottom button,
+  .bottom .tg {
+    flex: 1;
+    text-align: center;
+    padding: 12px 8px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="page">
+<main class="card">
+
+  <div class="badge">ГОТОВЫЙ ПРОМПТ ДЛЯ УЧИТЕЛЯ</div>
+
+  <h1>Один тест — три класса</h1>
+
+  <p class="lead">
+    Загрузите один тест и опишите свои классы. ИИ создаст отдельную
+    версию для каждого, сохранив то, что вы действительно проверяете.
+  </p>
+
+  <div class="flow">
+    Один тест → особенности классов → адаптация → готовые версии
+  </div>
+
+  <div class="prompt-box" id="prompt">Ты — опытный методист и специалист по адаптации учебных материалов.
+
+Я передам тебе один исходный тест и описание нескольких классов или групп, которые изучают одну и ту же тему.
+
+Твоя задача — создать отдельную версию теста для каждого класса, адаптировав способ проверки под учеников, но сохранив единое учебное ядро.
+
+Главный принцип:
+
+МЕНЯЕМ ДОСТУП К ЗАДАНИЮ, НО НЕ ТО, ЧТО МЫ ПРОВЕРЯЕМ.
+
+Сначала проанализируй исходный тест и определи:
+
+— какие знания и умения проверяет каждое задание;
+— какие задания относятся к базовому уровню;
+— где сложность создается самим содержанием, а где формулировкой или форматом задания;
+— какие элементы нельзя менять, иначе разные классы будут проверяться уже по разным знаниям.
+
+Затем изучи описание каждого класса.
+
+Если данных недостаточно для адаптации, задай максимум 3 вопроса. Не спрашивай информацию, которая не влияет на результат.
+
+После этого создай отдельную версию для каждого класса.
+
+Например:
+
+для класса с базовым уровнем — сохранить исходную сложность;
+
+для сильного класса — добавить задания на перенос знаний, применение, анализ или более сложные ситуации;
+
+для класса, которому тема дается сложнее, — упростить язык инструкции, разбить сложное действие на этапы, добавить пример, структуру или подсказку.
+
+ВАЖНО:
+
+Не упрощай само проверяемое знание только потому, что класс слабее.
+
+Не заменяй сложное учебное действие более простым, если именно оно является предметом проверки.
+
+Не добавляй сильному классу материал, который он еще не изучал.
+
+Не делай подсказку настолько явной, чтобы она фактически содержала ответ.
+
+Если какое-либо исходное задание невозможно адаптировать без изменения проверяемого знания, сохрани его и прямо укажи это.
+
+Для каждой версии подготовь:
+
+— готовый тест;
+— инструкции ученикам;
+— ответы;
+— критерии проверки, если они нужны.
+
+После тестов покажи короткую таблицу:
+
+| Что проверяем | Исходный тест | Класс 1 | Класс 2 | Класс 3 |
+|---|---|---|---|---|
+
+В ней кратко покажи, что изменилось в способе предъявления задания и что осталось неизменным.
+
+Перед выдачей проведи проверку сопоставимости:
+
+1. Все версии проверяют одно и то же учебное ядро.
+2. Адаптация действительно соответствует описанию каждого класса.
+3. Упрощение формулировки не превратилось в упрощение проверяемого знания.
+4. Усложнение не требует материала, которого не было в исходной теме.
+5. Подсказки помогают выполнить действие, но не выдают ответ.</div>
+
+  <p class="hint">
+    Как использовать: загрузите исходный тест → опишите классы → скопируйте промпт → получите адаптированные версии.
+  </p>
+
+  <div class="telegram-block">
+
+    <div class="telegram-copy">
+      <strong>Еще больше идей — в моем Telegram-канале</strong>
+      <span>Промпты, инструменты и способы использовать ИИ в работе учителя.</span>
+    </div>
+
+    <div class="bottom">
+      <button onclick="copyPrompt(this)">Скопировать промпт</button>
+
+      <a
+        class="tg"
+        href="https://t.me/+MppsyJ5n_nw0ZWEy"
+        target="_blank"
+        rel="noopener noreferrer">
+        Перейти в Telegram →
+      </a>
+    </div>
+
+  </div>
+
+</main>
+</div>
+
+<script>
+async function copyPrompt(button) {
+  const text = document.getElementById("prompt").innerText;
+
+  try {
+    await navigator.clipboard.writeText(text);
+  } catch (error) {
+    const textarea = document.createElement("textarea");
+    textarea.value = text;
+    document.body.appendChild(textarea);
+    textarea.select();
+    document.execCommand("copy");
+    textarea.remove();
+  }
+
+  const oldText = button.textContent;
+  button.textContent = "Скопировано ✓";
+
+  setTimeout(() => {
+    button.textContent = oldText;
+  }, 1800);
+}
+</script>
+
+</body>
+</html>
